@@ -1,5 +1,5 @@
 0.项目结构如下
-           --|
+ service-test|
              |--common 公共依赖
              |--msg-service 邮件模块
              |--user-service 用户服务（依赖了common，msg-service）,主模块
