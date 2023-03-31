@@ -1,20 +1,20 @@
 0.项目结构如下
- service-test|
+           --|
              |--common 公共依赖
              |--msg-service 邮件模块
              |--user-service 用户服务（依赖了common，msg-service）,主模块
 
 1.创建数据库schema
 
-2.执行脚步mysql.sql，见/service/mysql.sql
+2.执行脚本mysql.sql，见 mysql.sql
 
-3.修改/service/resource/application.yml的数据库配置部分
+3.修改/user-service/resource/application.yml的数据库配置部分
     3.1 url中的ip:port/schema
     3.2 username
     3.3 password
 
-4.修改/service/resource/application.yml的数据库配置部分
+4.修改/user-service/resource/application.yml的数据库配置部分
     4.1 username
     4.2 password
 
-5.执行/service/build.sh 编译打包(test-service.jar)，并自动启动服务.
+5.执行build.sh 编译打包(test-service.jar)，并自动启动服务.
