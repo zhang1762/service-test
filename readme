@@ -13,7 +13,7 @@
     3.2 username
     3.3 password
 
-4.修改/user-service/resource/application.yml的数据库配置部分
+4.修改/user-service/resource/application.yml的邮箱配置部分
     4.1 username
     4.2 password
 
