@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.user.dao.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.user.domain.UserInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="send_flag" jdbcType="TINYINT" property="sendFlag"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="valid_flag" jdbcType="TINYINT" property="validFlag"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.user.domain.UserInfo"
+            useGeneratedKeys="true" keyProperty="id"><!--需要将存储完生成的id赋给对象的id属性-->
+        insert into user_info (user_name, age,
+                               email, send_flag,
+                               valid_flag)
+        values (#{userName,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
+                #{email,jdbcType=VARCHAR}, #{sendFlag,jdbcType=TINYINT},
+                #{validFlag,jdbcType=TINYINT})
+    </insert>
+
+    <delete id="invalidByPrimaryKey" parameterType="java.lang.Long">
+        update user_info
+        set valid_flag = 0
+        where id in
+        <foreach collection="ids" item="id" close=")" open="(" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="com.user.domain.UserInfo">
+        update user_info
+        set user_name   = #{userName,jdbcType=VARCHAR},
+            age         = #{age,jdbcType=INTEGER},
+            email       = #{email,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select id, user_name, age, email, send_flag, create_date, valid_flag
+        from user_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByEmail"  resultMap="BaseResultMap">
+        select id, user_name, age, email, send_flag, create_date, valid_flag
+        from user_info
+        where `email` = #{email}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select id, user_name, age, email, send_flag, create_date, valid_flag
+        from user_info
+    </select>
+
+    <update id="updateSendFlag">
+        update user_info
+        set send_flag  = 1
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

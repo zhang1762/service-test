@@ -1,0 +1,7 @@
+.idea
+.iml
+.log
+target/
+./user-service/target
+./msg-service/target
+./common/target
