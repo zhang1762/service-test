@@ -7,6 +7,6 @@ VOLUME /tmp
 ADD  user-service.jar /user-service.jar
 
 #声明需要暴露的端口
-EXPOSE  80
+EXPOSE  8081
 #配置容器启动后执行的命令,并指定使用项目外部的配置文件
 ENTRYPOINT  ["java","-Xms2g","-Xmx2g","-jar","/user-service.jar"]
