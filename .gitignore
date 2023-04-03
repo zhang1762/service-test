@@ -2,6 +2,7 @@
 .iml
 .log
 target/
+output/
 ./user-service/target
 ./msg-service/target
 ./common/target

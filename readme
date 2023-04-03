@@ -17,4 +17,6 @@
     4.1 username
     4.2 password
 
-5.执行build.sh 编译打包(test-service.jar)，并自动启动服务.
+5. 部署/执行
+  5.1 非docker模式下可执行build.sh 编译打包(user-service.jar)，并自动启动服务.
+  5.2 docker模式下部署可执行build-docker.sh进行编译及启动.
